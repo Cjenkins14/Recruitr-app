@@ -1,0 +1,57 @@
+* {
+  
+  box-sizing: border-box;
+}
+header {
+margin-top: 10%;
+padding: 0;
+}
+
+.prospect-list {
+  list-style: none;
+  padding: 0;
+}
+.prospects {
+  margin: o;
+  padding: 0;
+}
+.school-name {
+  padding: 20px;
+
+}
+
+
+
+
+body {
+  background: gray;
+  font-family: "Open Sans",
+  sans-serif; 
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+nav,
+footer {
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+
+
+/* a:hover {
+  color: red;
+}
+a:active {
+  underline red
+  
+} */

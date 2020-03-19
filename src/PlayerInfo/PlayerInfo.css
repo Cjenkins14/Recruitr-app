@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  
+}
+
+ul {
+  border-bottom: 1px solid black;
+}
+
+body {
+  background: gray;
+  color: white;
+  font-family: "Open Sans",
+  sans-serif; 
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 0 /* Player ratio: 100 / (1280 / 720) */
+}
+ 
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.info-list, .stat-list {
+  list-style: none;
+  text-align: center;
+}
+
+h1, h2 {
+  margin: 0;
+  color: black;
+}
+h2 {
+  padding: 0;
+}
+
+nav,
+footer {
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+header {
+  top: 0;
+  left: 10%;
+}
