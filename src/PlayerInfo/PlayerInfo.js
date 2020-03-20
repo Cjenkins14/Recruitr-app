@@ -63,6 +63,7 @@ class PlayerInfo extends Component {
                 <li >
                     Phone: {info.phone}
                 </li>
+
             </ul>
         )
     }

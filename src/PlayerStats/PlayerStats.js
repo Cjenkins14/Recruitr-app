@@ -39,7 +39,10 @@ class PlayerStats extends Component {
                 <li>
                     Pop time: {stats.popTime}
                 </li>
-
+                <li>
+                    Notes: <br />
+                    {stats.notes}
+                </li>
             </ul>
         )
     }

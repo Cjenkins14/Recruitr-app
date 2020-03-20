@@ -24,7 +24,7 @@ class AddPlayer extends Component {
             batThrow: e.target['bat-throw'].value,
             date: e.target['date-seen'].value,
             phone: e.target['phone-number'].value,
-            url: e.target['vid-url'].value
+            url: e.target['vid-url'].value,
         }
         const newPlayerStats = {
             playerId: 5,
@@ -33,6 +33,7 @@ class AddPlayer extends Component {
             turnTime: e.target['turn-time'].value,
             exitVelo: e.target['exit-velo'].value,
             popTime: e.target['pop-time'].value,
+            notes: e.target['eval-notes'].value
         }
 
         console.log(newPlayer, newContact, newPlayerStats)

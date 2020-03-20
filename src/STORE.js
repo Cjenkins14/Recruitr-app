@@ -37,6 +37,7 @@ const contact = [
         date: new Date().toDateString(),
         phone: 972 - 555 - 1111,
         url: 'https://www.youtube.com/watch?v=7WfVREOHaAk'
+
     },
     {
         playerId: 3,
@@ -67,6 +68,7 @@ const playerStats = [
         turnTime: 1,
         exitVelo: 1,
         popTime: 1,
+        notes: 'Babe Ruth'
     },
     {
         playerId: 2,
@@ -75,6 +77,7 @@ const playerStats = [
         turnTime: 2,
         exitVelo: 2,
         popTime: 2,
+        notes: 'Lou Gherig'
     },
     {
         playerId: 3,
@@ -83,6 +86,7 @@ const playerStats = [
         turnTime: 3,
         exitVelo: 3,
         popTime: 3,
+        notes: 'Jackie Robinson'
     },
     {
         playerId: 4,
@@ -91,6 +95,7 @@ const playerStats = [
         turnTime: 4,
         exitVelo: 4,
         popTime: 4,
+        notes: 'Derek Jeter'
     }
 ]
 
