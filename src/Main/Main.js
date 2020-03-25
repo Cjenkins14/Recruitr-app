@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import './Main.css'
 import { Link } from 'react-router-dom'
 import NavBar from '../Nav/Nav'
+import ApiContext from '../ApiContext'
 
 class Main extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            schools: this.props.schools
-        }
-    }
+    // constructor(props) {
+    // super(props)
+    // this.state = {
+    // schools: this.props.schools
+    // }
+    // }
+
+    static contextType = ApiContext
+
     renderSchools() {
-        const schools = this.state.schools
+        const schools = this.context.schools
         return Object.values(schools).map(school => (
             <li>
                 <Link to={`/schoolmain/${school.id}`}>

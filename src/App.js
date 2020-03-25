@@ -8,16 +8,38 @@ import SchoolMain from './SchoolMain/SchoolMain';
 import PlayerInfo from './PlayerInfo/PlayerInfo'
 import AddPlayer from './AddPlayer/AddPlayer'
 import AddSchool from './AddSchool/AddSchool'
+import ApiContext from './ApiContext'
+import config from './config'
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            school: school,
-            contact: contact,
-            playerStat: playerStats,
-            players: players,
-        }
+    state = {
+        school: [],
+        playerInfo: []
+    };
+
+    componentDidMount() {
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/school`),
+            fetch(`${config.API_ENDPOINT}/player`)
+        ])
+            .then(([schoolRes, playerRes]) => {
+                if (!schoolRes.ok)
+                    return schoolRes.json().then(e => Promise.reject(e))
+                if (!playerRes.ok)
+                    return playerRes.json().then(e => Promise.reject(e))
+
+                return Promise.all([
+                    schoolRes.json(),
+                    playerRes.json()
+                ])
+            })
+            .then(([schools, players]) => {
+                this.setState({ schools, players })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
 
     handleNewSchool = (newSchool) => {
@@ -28,54 +50,41 @@ class App extends Component {
         })
         console.log(this.state.school)
     }
-    handleNewPlayer = (newPlayer, newContact, newPlayerStats) => {
+    handleNewPlayer = (newPlayer) => {
         this.setState({
-            players: [
-                ...this.state.players,
+            playerInfo: [
+                ...this.state.playerInfo,
                 newPlayer
-            ],
-            contact: [
-                ...this.state.contact,
-                newContact
-            ],
-            playerStat: [
-                ...this.state.playerStat,
-                newPlayerStats
-            ],
+            ]
 
         }, console.log(this.state))
-
+    }
+    handleDeletePlayer = (playerId) => {
+        this.setState({
+            playerInfo: this.state.playerInfo.filter(player => player.playerid !== playerId)
+        })
     }
 
 
     render() {
-
+        const value = {
+            schools: this.state.school,
+            playerInfo: this.state.playerInfo,
+            handleNewPlayer: this.handleNewPlayer,
+            handleNewSchool: this.handleNewSchool,
+            handleDeletePlayer: this.handleDeletePlayer
+        }
         return (
-            <main className='App'>
-                <Route exact path='/' component={Landing} />
-                <Route path='/login' component={Login} />
-                <Route path='/main'
-                    render={(props) => <Main {...props}
-                        schools={this.state.school} />} />
-                <Route path='/schoolmain/:id'
-                    render={(props) => <SchoolMain  {...props}
-                        school={this.state.school}
-                        players={this.state.players} />} />
-                <Route path='/player/:id'
-                    render={(props) => <PlayerInfo {...props}
-                        contact={this.state.contact}
-                        pitchStats={this.state.pitchStat}
-                        playerStats={this.state.playerStat} />} />
-                <Route path='/addplayer'
-                    render={(props) => <AddPlayer {...props}
-                        school={this.state.school}
-                        handleNewPlayer={this.handleNewPlayer}
-                        component={AddPlayer} />} />
-                <Route path='/addschool'
-                    render={(props) => <AddSchool {...props}
-                        handleNewSchool={this.handleNewSchool}
-                        component={AddSchool} />} />
-            </main>
+            <ApiContext.Provider value={value}>
+                <div className='App'>
+                    <Route exact path='/' component={Landing} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/main'
+                        render={(props) => <Main {...props}
+                            schools={this.state.school} />} />
+
+                </div>
+            </ApiContext.Provider>
         )
     }
 }
