@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { contact, school, playerStats, players } from './STORE'
 import Landing from './Landing/Landing';
 import Login from './Login/Login';
 import Main from './Main/Main';
@@ -34,7 +33,10 @@ class App extends Component {
                 ])
             })
             .then(([schools, players]) => {
-                this.setState({ schools, players })
+                this.setState({
+                    school: schools,
+                    playerInfo: players
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -64,6 +66,11 @@ class App extends Component {
             playerInfo: this.state.playerInfo.filter(player => player.playerid !== playerId)
         })
     }
+    handleDeleteSchool = schoolId => {
+        this.setState({
+            school: this.state.school.filter(school => school.id !== schoolId)
+        }, () => { console.log(this.state.school) })
+    }
 
 
     render() {
@@ -72,17 +79,33 @@ class App extends Component {
             playerInfo: this.state.playerInfo,
             handleNewPlayer: this.handleNewPlayer,
             handleNewSchool: this.handleNewSchool,
-            handleDeletePlayer: this.handleDeletePlayer
+            handleDeletePlayer: this.handleDeletePlayer,
+            deleteSchool: this.handleDeleteSchool,
         }
         return (
             <ApiContext.Provider value={value}>
                 <div className='App'>
-                    <Route exact path='/' component={Landing} />
-                    <Route path='/login' component={Login} />
-                    <Route path='/main'
-                        render={(props) => <Main {...props}
-                            schools={this.state.school} />} />
-
+                    <Route
+                        exact path='/'
+                        component={Landing} />
+                    <Route
+                        path='/login'
+                        component={Login} />
+                    <Route
+                        path='/main'
+                        component={Main} />
+                    <Route
+                        path='/schoolmain/:id'
+                        component={SchoolMain} />
+                    <Route
+                        path='/player/:id'
+                        component={PlayerInfo} />
+                    <Route
+                        path='/addplayer'
+                        component={AddPlayer} />
+                    <Route
+                        path='/addschool'
+                        component={AddSchool} />
                 </div>
             </ApiContext.Provider>
         )

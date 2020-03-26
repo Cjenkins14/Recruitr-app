@@ -4,7 +4,7 @@ export default React.createContext({
     schools: [],
     playerInfo: [],
     addPlayer: () => { },
-    addSchool: () => { },
+    handleNewSchool: () => { },
     deletePlayer: () => { },
     deleteSchool: () => { },
     editPlayer: () => { }

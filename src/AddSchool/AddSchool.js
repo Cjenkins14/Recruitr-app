@@ -1,17 +1,42 @@
 import React, { Component } from 'react'
 import './AddSchool.css'
 import NavBar from '../Nav/Nav'
+import config from '../config'
+import ApiContext from '../ApiContext'
+
+
 class AddSchool extends Component {
+    static defaultProps = {
+        history: {
+            push: () => { }
+        }
+    }
+    static contextType = ApiContext
 
     handleSubmit = e => {
         e.preventDefault()
         const newSchool = {
-            id: 5,
             name: e.target['school-name'].value
         }
-        console.log(newSchool)
-        this.props.handleNewSchool(newSchool)
-        this.props.history.goBack()
+        fetch(`${config.API_ENDPOINT}/school/add`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newSchool),
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
+            })
+            .then(school => {
+                this.context.handleNewSchool(school)
+                this.props.history.push(`/main`)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
     render() {

@@ -28,7 +28,7 @@ class SchoolMain extends Component {
     handleClickDelete = e => {
         e.preventDefault()
         const schoolId = this.props.match.params.id
-        let context = this.context
+
 
         fetch(`${config.API_ENDPOINT}/school/${schoolId}`, {
             method: 'DELETE',
@@ -42,9 +42,9 @@ class SchoolMain extends Component {
                 return res
             })
             .then(() => {
-                context.deleteSchool(schoolId)
+                this.context.deleteSchool(schoolId)
                 this.props.onDeleteSchool(schoolId)
-                this.props.history.push(`/main`)
+                this.props.history.push('/main')
             })
             .catch(error => {
                 console.error({

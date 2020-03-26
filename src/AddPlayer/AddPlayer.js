@@ -1,51 +1,67 @@
 import React, { Component } from 'react'
 import './AddPlayer.css'
 import NavBar from '../Nav/Nav'
+import config from '../config'
+import ApiContext from '../ApiContext'
+
 class AddPlayer extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            school: this.props.school
+    static defaultProps = {
+        history: {
+            push: () => { }
         }
     }
+    static contextType = ApiContext
+
+
     handleSubmit = e => {
         e.preventDefault()
         const newPlayer = {
             name: e.target['player-name'].value,
-            id: 5,
-            schoolId: e.target['player-school'].value
-        }
-        console.log(newPlayer)
-        const newContact = {
-            playerId: 5,
-            name: e.target['player-name'].value,
-            school: e.target['player-school'].value,
-            gradDate: e.target['grad-date'].value,
-            batThrow: e.target['bat-throw'].value,
+            schoolid: e.target['player-school'].value,
+            position: e.target['position'].value,
+            graddate: e.target['grad-date'].value,
+            batthrow: e.target['bat-throw'].value,
             date: e.target['date-seen'].value,
             phone: e.target['phone-number'].value,
             url: e.target['vid-url'].value,
-        }
-        const newPlayerStats = {
-            playerId: 5,
-            dash60: e.target['yard-dash'].value,
-            plateToFirst: e.target['plate-first'].value,
-            turnTime: e.target['turn-time'].value,
-            exitVelo: e.target['exit-velo'].value,
-            popTime: e.target['pop-time'].value,
+            dash: e.target['yard-dash'].value,
+            platefirst: e.target['plate-first'].value,
+            turntime: e.target['turn-time'].value,
+            exitvelo: e.target['exit-velo'].value,
+            poptime: e.target['pop-time'].value,
             notes: e.target['eval-notes'].value
         }
-
-        console.log(newPlayer, newContact, newPlayerStats)
-        this.props.handleNewPlayer(newPlayer, newContact, newPlayerStats)
-        this.props.history.goBack()
+        fetch(`${config.API_ENDPOINT}/player`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newPlayer),
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
+            })
+            .then(player => {
+                this.context.handleNewPlayer(player)
+                this.props.history.push(`/player/${player.playerid}`)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
+
+
     renderSchoolSelect() {
-        return (Object.values(this.state.school).map(school => {
+        const schools = this.context.schools
+        return (Object.values(schools).map(school => {
             return <option name="school-id" value={school.id}>{school.name}</option>
         })
         )
     }
+
+
     render() {
         return (
 

@@ -1,3 +1,4 @@
 export default {
-    API_ENDPOINT: `http://pacific-inlet-03257.herokuapp.com`
+    API_ENDPOINT: `https://pacific-inlet-03257.herokuapp.com`,
+
 }

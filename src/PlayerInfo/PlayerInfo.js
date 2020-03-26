@@ -1,73 +1,41 @@
 import React, { Component } from 'react'
 import './PlayerInfo.css'
-import ReactPlayer from 'react-player'
+import VidPlayer from '../ReactPlayer/ReactPlayer'
 import PlayerStats from '../PlayerStats/PlayerStats'
+import PlayerContact from '../PlayerContact/PlayerContact'
 import NavBar from '../Nav/Nav'
-
+import ApiContext from '../ApiContext'
 
 class PlayerInfo extends Component {
-    state = {
-        contact: this.props.contact,
-        playerStat: this.props.playerStats
+    constructor(props) {
+        super(props)
+        this.state = {
+            player: []
+        }
     }
 
+    static contextType = ApiContext
 
 
     findPlayer = (key) => {
-        const player = this.state.playerStat.find(player => player.playerId == key)
+        const playerInfo = this.context.playerInfo
+        const player = playerInfo.find(player => player.playerid === Number(key))
         console.log(player)
         return player
     }
-    findContact = (key) => {
-        const contact = this.state.contact.find(contact => contact.playerId == key)
-        console.log(contact)
-        return contact
-    }
+    // findContact = (key) => {
+    // const contact = this.state.contact.find(contact => contact.playerId == key)
+    // console.log(contact)
+    // return contact
+    // }
 
     componentDidMount() {
         const id = this.props.match.params.id
         this.setState({
-            contact: this.findContact(id),
-            playerStat: this.findPlayer(id)
-        }, () => { console.log(this.state.contact, this.state.playerStat) })
+            player: this.findPlayer(id)
+        }, () => { console.log(this.state.player) })
 
     }
-
-    renderVidPlayer() {
-        return (
-            <div className="player-wrapper">
-                <ReactPlayer url={this.state.contact.url}
-                    className='player-div'
-                    width='100%'
-                    height='300px' />
-            </div>
-        )
-    }
-    renderPlayerInfo() {
-        const info = this.state.contact
-
-        return (
-            <ul className='info-list'>
-                <li >
-                    Grad Date: {info.gradDate}
-                </li>
-                <li >
-                    Position: {info.position}
-                </li>
-                <li >
-                    Bat/Throw: {info.batThrow}
-                </li>
-                <li >
-                    Date seen: {info.date}
-                </li>
-                <li >
-                    Phone: {info.phone}
-                </li>
-
-            </ul>
-        )
-    }
-
 
     render() {
 
@@ -76,21 +44,20 @@ class PlayerInfo extends Component {
                 <main role="main">
                     <NavBar />
                     <header role="banner">
-                        <h1>{this.state.contact.name}</h1>
+                        <h1>{this.state.player.name}</h1>
 
                     </header>
                     <section className="player-info">
-                        {/* use match.params to get id # for info.id.name */}
                         <div className="player-info">
-                            {this.renderPlayerInfo()}
+                            {PlayerContact(this.state.player)}
                         </div>
 
                         <div className="player-stats">
-                            <PlayerStats playerStat={this.state.playerStat}
-                                id={this.props.match.params.id} />
+                            {PlayerStats(this.state.player)}
                         </div>
-                        {this.renderVidPlayer()}
+                        {VidPlayer(this.state.player)}
                     </section>
+
                 </main>
             </div>
         )
