@@ -10,7 +10,7 @@ class SchoolMain extends Component {
         super(props)
         this.state = {
             players: [],
-            school: []
+            school: {}
         }
     }
     static defaultProps = {
@@ -23,7 +23,8 @@ class SchoolMain extends Component {
         }
 
     }
-    static contextType = ApiContext
+
+    static contextType = ApiContext;
 
     handleClickDelete = e => {
         e.preventDefault()
@@ -54,7 +55,10 @@ class SchoolMain extends Component {
     }
 
     findPlayers = (key) => {
+
+        console.log(this.context)
         const playerInfo = this.context.playerInfo
+        console.log(playerInfo)
         const players = Object.values(playerInfo).filter(player => player.schoolid === Number(key))
         console.log(players)
         return players
@@ -78,6 +82,7 @@ class SchoolMain extends Component {
 
 
     renderPlayers() {
+
         return (
             Object.values(this.state.players).map(player =>
                 <li>
@@ -89,32 +94,41 @@ class SchoolMain extends Component {
                 </li>
             ))
     }
+
     render() {
+
         return (
-            <div className='school-main'>
-                <NavBar />
-                <header role="banner">
-                    <h1>{this.state.school.name}</h1>
-                </header>
-                <section className="prospects">
-                    <h2>Select a recruit</h2>
-                    <ul className="prospect-list">
-                        {this.renderPlayers()}
-                    </ul>
-                </section>
-                <Link to='/addplayer'>
-                    <button>Add</button>
-                </Link>
-                <button
-                    className='school-delete'
-                    type='button'
-                    onClick={this.handleClickDelete}
-                >
-                    Delete
+            <ApiContext.Consumer>
+                {(context) => (
+                    <div className='school-main'>
+                        <NavBar />
+                        <header role="banner">
+                            <h1>{this.state.school.name}</h1>
+                        </header>
+                        <section className="prospects">
+                            <h2>Select a recruit</h2>
+                            <ul className="prospect-list">
+                                {this.renderPlayers()}
+                            </ul>
+                        </section>
+                        <Link to='/addplayer'>
+                            <button>Add</button>
+                        </Link>
+                        <button
+                            className='school-delete'
+                            type='button'
+                            onClick={this.handleClickDelete}
+                        >
+                            Delete
                 </button>
-            </div>
+                    </div>
+                )}
+            </ApiContext.Consumer>
         )
+
     }
+
 }
+
 
 export default SchoolMain;

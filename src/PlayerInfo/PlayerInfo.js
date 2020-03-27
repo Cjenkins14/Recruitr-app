@@ -5,6 +5,8 @@ import PlayerStats from '../PlayerStats/PlayerStats'
 import PlayerContact from '../PlayerContact/PlayerContact'
 import NavBar from '../Nav/Nav'
 import ApiContext from '../ApiContext'
+import config from '../config'
+import { Link } from 'react-router-dom'
 
 class PlayerInfo extends Component {
     constructor(props) {
@@ -13,9 +15,46 @@ class PlayerInfo extends Component {
             player: []
         }
     }
+    static defaultProps = {
+        onDeletePlayer: () => { },
+        history: {
+            push: () => { }
+        },
+        match: {
+            params: {}
+        }
+
+    }
 
     static contextType = ApiContext
 
+    handleClickDelete = e => {
+        e.preventDefault()
+        const playerId = this.props.match.params.id
+
+
+        fetch(`${config.API_ENDPOINT}/player/${playerId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res
+            })
+            .then(() => {
+                this.context.deletePlayer(playerId)
+                this.props.onDeletePlayer(playerId)
+                this.props.history.goBack()
+            })
+            .catch(error => {
+                console.error({
+                    error
+                })
+            })
+    }
 
     findPlayer = (key) => {
         const playerInfo = this.context.playerInfo
@@ -23,11 +62,6 @@ class PlayerInfo extends Component {
         console.log(player)
         return player
     }
-    // findContact = (key) => {
-    // const contact = this.state.contact.find(contact => contact.playerId == key)
-    // console.log(contact)
-    // return contact
-    // }
 
     componentDidMount() {
         const id = this.props.match.params.id
@@ -38,7 +72,7 @@ class PlayerInfo extends Component {
     }
 
     render() {
-
+        const id = this.props.match.params.id
         return (
             <div className='player-info'>
                 <main role="main">
@@ -57,7 +91,18 @@ class PlayerInfo extends Component {
                         </div>
                         {VidPlayer(this.state.player)}
                     </section>
-
+                    <button
+                        className='player-delete'
+                        type='button'
+                        onClick={this.handleClickDelete}
+                    >
+                        Delete
+                    </button>
+                    <Link to={`/editplayer/${id}`}>
+                        <button>
+                            Edit
+                        </button>
+                    </Link>
                 </main>
             </div>
         )
