@@ -21,6 +21,7 @@ class App extends Component {
     }
 
 
+
     componentDidMount() {
         Promise.all([
             fetch(`${config.API_ENDPOINT}/school`),
@@ -80,13 +81,17 @@ class App extends Component {
         }, () => { console.log(this.state.school) })
     }
     handlePlayerUpdate = (update, id) => {
+        console.log(update)
         let newPlayers = this.state.playerInfo.filter(player => player.playerid !== Number(id))
+        console.log(newPlayers)
+        let player = update.find(player => player.playerid === Number(id))
+        let newArray = newPlayers.push(player)
         this.setState({
             playerInfo: [
-                newPlayers,
-                update
+                newPlayers
             ]
         }, () => { console.log(this.state.playerInfo) })
+
     }
 
 
