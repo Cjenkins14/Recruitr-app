@@ -65,8 +65,10 @@ class EditPlayer extends Component {
             },
             body: JSON.stringify(editPlayer),
         })
-            .then(player => {
-                this.context.handlePlayerUpdate(player, id)
+            .then(res => {
+                console.log(res)
+                console.log(res.body.player)
+                this.context.handlePlayerUpdate(res, id)
                 this.props.history.push(`/player/${id}`)
             })
             .catch(error => {
