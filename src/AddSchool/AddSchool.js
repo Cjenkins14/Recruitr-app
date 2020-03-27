@@ -43,7 +43,7 @@ class AddSchool extends Component {
         return (
 
             <main role="main">
-                <NavBar />
+                <NavBar history={this.props.history} />
                 <header role="banner">
                     <h1>Recruitr</h1>
                 </header>

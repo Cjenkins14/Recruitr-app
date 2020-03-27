@@ -5,12 +5,12 @@ import NavBar from '../Nav/Nav'
 import ApiContext from '../ApiContext'
 
 class Main extends Component {
-    // constructor(props) {
-    // super(props)
-    // this.state = {
-    // schools: this.props.schools
-    // }
-    // }
+    constructor(props) {
+        super(props)
+        this.state = {
+            schools: this.props.schools
+        }
+    }
 
     static contextType = ApiContext
 
@@ -30,7 +30,7 @@ class Main extends Component {
     render() {
         return (
             <div className='main-page'>
-                <NavBar />
+                <NavBar history={this.props.history} />
                 <main role="main">
                     <header role="banner">
                         <h1>Select a school</h1>

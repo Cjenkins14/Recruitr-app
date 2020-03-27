@@ -7,5 +7,5 @@ export default React.createContext({
     handleNewSchool: () => { },
     deletePlayer: () => { },
     deleteSchool: () => { },
-    editPlayer: () => { }
+    handlePlayerUpdate: () => { }
 })

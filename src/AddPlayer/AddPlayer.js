@@ -66,7 +66,7 @@ class AddPlayer extends Component {
         return (
 
             <main role="main">
-                <NavBar />
+                <NavBar history={this.props.history} />
                 <header role="banner">
                     <h1>Recruitr</h1>
                 </header>
@@ -144,7 +144,10 @@ class AddPlayer extends Component {
                         </fieldset>
                         <label className='notes-textarea' htmlFor="eval-notes">Notes</label>
                         <input className="eval" type="textarea" id="eval-notes" /> <br />
-                        <button type="reset">Clear</button>
+                        <button
+                            type="reset"
+                            value='Reset form'
+                        >Clear</button>
                         <button type="Add">Add</button>
                     </form>
                 </section>

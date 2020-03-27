@@ -79,6 +79,15 @@ class App extends Component {
             school: this.state.school.filter(school => school.id !== Number(schoolId))
         }, () => { console.log(this.state.school) })
     }
+    handlePlayerUpdate = (update, id) => {
+        let newPlayers = this.state.playerInfo.filter(player => player.playerid !== Number(id))
+        this.setState({
+            playerInfo: [
+                newPlayers,
+                update
+            ]
+        }, () => { console.log(this.state.playerInfo) })
+    }
 
 
     render() {
@@ -89,6 +98,7 @@ class App extends Component {
             handleNewSchool: this.handleNewSchool,
             deletePlayer: this.handleDeletePlayer,
             deleteSchool: this.handleDeleteSchool,
+            handlePlayerUpdate: this.handlePlayerUpdate
         }
         console.log(value)
         return (

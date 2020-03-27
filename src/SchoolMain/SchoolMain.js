@@ -101,7 +101,7 @@ class SchoolMain extends Component {
             <ApiContext.Consumer>
                 {(context) => (
                     <div className='school-main'>
-                        <NavBar />
+                        <NavBar history={this.props.history} />
                         <header role="banner">
                             <h1>{this.state.school.name}</h1>
                         </header>

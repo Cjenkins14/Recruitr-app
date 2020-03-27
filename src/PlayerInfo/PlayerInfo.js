@@ -76,7 +76,7 @@ class PlayerInfo extends Component {
         return (
             <div className='player-info'>
                 <main role="main">
-                    <NavBar />
+                    <NavBar history={this.props.history} />
                     <header role="banner">
                         <h1>{this.state.player.name}</h1>
 
