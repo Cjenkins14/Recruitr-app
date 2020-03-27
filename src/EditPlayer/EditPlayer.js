@@ -21,9 +21,7 @@ class EditPlayer extends Component {
     }
     static contextType = ApiContext
 
-    handleClickSubmit() {
 
-    }
 
     findPlayer = (key) => {
         const playerInfo = this.context.playerInfo
@@ -43,7 +41,8 @@ class EditPlayer extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const id = this.props.match.params.id;
-        const newPlayer = {
+        console.log(e.target['player-name'])
+        const editPlayer = {
             name: e.target['player-name'].value,
             schoolid: e.target['player-school'].value,
             position: e.target['position'].value,
@@ -64,16 +63,12 @@ class EditPlayer extends Component {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newPlayer),
+            body: JSON.stringify(editPlayer),
         })
-            .then(res => {
-                if (!res.ok)
-                    return res.json().then(e => Promise.reject(e))
-                return res.json()
-            })
             .then(player => {
-                this.context.handleNewPlayer(player)
-                this.props.history.push(`/player/${player.playerid}`)
+                console.log(player.body)
+                // this.context.handlePlayerUpdate(player.body, id)
+                this.props.history.push(`/player/${id}`)
             })
             .catch(error => {
                 console.error({ error })
@@ -95,54 +90,54 @@ class EditPlayer extends Component {
         return (
 
             <main role="main">
-                <NavBar />
+                <NavBar history={this.props.history} />
                 <header role="banner">
                     <h1>Recruitr</h1>
                 </header>
                 <section>
-                    <h2>Add a recruit</h2>
+                    <h2>{this.state.player.name}</h2>
                     <form className="player-form" onSubmit={this.handleSubmit}>
                         <fieldset>
                             <legend>Recruit Info</legend>
                             <ul className="input-list">
                                 <li>
                                     <label htmlFor='player-name'>
-                                        Recruit Name:
+                                        Recruit Name
                                         </label>
-                                    <input type='text' id='player-name' required autoFocus />
+                                    <input type='text' id='player-name' defaultValue={this.state.player.name} />
                                 </li>
                                 <li>
                                     <label htmlFor='player-school'>School:</label>
-                                    <select id='player-school' defaultValue={this.state.schoolid} required>
+                                    <select id='player-school' defaultValue={this.state.player.schoolid} required>
                                         {this.renderSchoolSelect()}
                                     </select>
                                 </li>
                                 <li>
                                     <label htmlFor='grad-date'>Grad Date:</label>
-                                    <input type='number' id='grad-date' defaultValue={this.state.graddate} required />
+                                    <input type='number' id='grad-date' defaultValue={this.state.player.graddate} required />
                                 </li>
                                 <li>
                                     <label htmlFor="position">Position:</label>
-                                    <input type="text" id="position" defaultValue={this.state.position} required />
+                                    <input type="text" id="position" defaultValue={this.state.player.position} required />
                                 </li>
                                 <li>
                                     <label htmlFor="bat-throw">Bat/Throw:</label>
-                                    <select id="bat-throw" defaultValue={this.state.batthrow} required>
+                                    <select id="bat-throw" defaultValue={this.state.player.batthrow} required>
                                         <option>Bat</option>
                                         <option>Throw</option>
                                     </select>
                                 </li>
                                 <li>
                                     <label htmlFor="date-seen">Date seen:</label>
-                                    <input type="date" id="date-seen" defaultValue={this.state.date} required />
+                                    <input type="date" id="date-seen" defaultValue={this.state.player.date} required />
                                 </li>
                                 <li>
                                     <label htmlFor="phone-number">Phone:</label>
-                                    <input type="text" id="phone-number" defaultValue={this.state.phone} required />
+                                    <input type="text" id="phone-number" defaultValue={this.state.player.phone} required />
                                 </li>
                                 <li>
                                     <label htmlFor="video"> Video URL:</label>
-                                    <input type="url" id="vid-url" defaultValue={this.state.url} />
+                                    <input type="url" id="vid-url" defaultValue={this.state.player.url} />
                                 </li>
                             </ul>
                         </fieldset>
@@ -151,23 +146,23 @@ class EditPlayer extends Component {
                             <ul className="input-list">
                                 <li>
                                     <label htmlFor="yard-dash">60 yd:</label>
-                                    <input type="number" id="yard-dash" defaultValue={this.state.dash} />
+                                    <input type="number" id="yard-dash" defaultValue={this.state.player.dash} />
                                 </li>
                                 <li>
                                     <label htmlFor="plate-first">Home to 1st:</label>
-                                    <input type="number" id="plate-first" defaultValue={this.state.platefirst} />
+                                    <input type="number" id="plate-first" defaultValue={this.state.player.platefirst} />
                                 </li>
                                 <li>
                                     <label htmlFor="turn-time">Turn time:</label>
-                                    <input type="number" id="turn-time" defaultValue={this.state.turntime} />
+                                    <input type="number" id="turn-time" defaultValue={this.state.player.turntime} />
                                 </li>
                                 <li>
                                     <label htmlFor="exit-velo">Exit velo:</label>
-                                    <input type="number" id="exit-velo" defaultValue={this.state.exitvelo} />
+                                    <input type="number" id="exit-velo" defaultValue={this.state.player.exitvelo} />
                                 </li>
                                 <li>
                                     <label htmlFor="pop-time">Pop time:</label>
-                                    <input type="number" id="pop-time" defaultValue={this.state.poptime} />
+                                    <input type="number" id="pop-time" defaultValue={this.state.player.poptime} />
                                 </li>
                             </ul>
                         </fieldset>
@@ -176,9 +171,9 @@ class EditPlayer extends Component {
                             className="eval"
                             type="textarea"
                             id="eval-notes"
-                            defaultValue={this.state.notes} /> <br />
+                            defaultValue={this.state.player.notes} /> <br />
                         <button type="reset">Clear</button>
-                        <button type="Add">Add</button>
+                        <button type="submit">Update</button>
                     </form>
                 </section>
             </main>
