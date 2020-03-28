@@ -81,17 +81,18 @@ class App extends Component {
         }, () => { console.log(this.state.school) })
     }
     handlePlayerUpdate = (update, id) => {
-        console.log(update)
-        let newPlayers = this.state.playerInfo.filter(player => player.playerid !== Number(id))
-        console.log(newPlayers)
-        let player = update.find(player => player.playerid === Number(id))
-        let newArray = newPlayers.push(player)
-        this.setState({
-            playerInfo: [
-                newPlayers
-            ]
-        }, () => { console.log(this.state.playerInfo) })
+        let updatedPlayer = update.find(player => player.playerid === Number(id));
+        let newPlayers = this.state.playerInfo.map(player => {
+            if (player.playerid !== Number(id)) {
+                return player;
+            } else {
+                return updatedPlayer;
+            }
+        });
 
+        this.setState({
+            playerInfo: newPlayers
+        });
     }
 
 
