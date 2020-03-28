@@ -81,10 +81,21 @@ class EditPlayer extends Component {
 
     renderSchoolSelect() {
         const schools = this.context.schools
+        const selected = this.state.player.schoolid
+        console.log(selected)
         return (Object.values(schools).map(school => {
-            return <option name="school-id" value={school.id}>{school.name}</option>
+            if (school.schoolid !== Number(selected)) {
+                return <option name="school-id" value={school.id}>{school.name}</option>
+            } else {
+                return <option name="school-id" value={school.id} selected>{school.name}</option>
+            }
         })
         )
+    }
+    createDefaultDate() {
+        var date = new Date();
+        var min_date = date.toISOString().slice(0, 10)
+        return min_date
     }
 
 
@@ -111,7 +122,7 @@ class EditPlayer extends Component {
                                 </li>
                                 <li>
                                     <label htmlFor='player-school'>School:</label>
-                                    <select id='player-school' defaultValue={this.state.player.schoolid} required>
+                                    <select id='player-school' required>
                                         {this.renderSchoolSelect()}
                                     </select>
                                 </li>
@@ -132,7 +143,7 @@ class EditPlayer extends Component {
                                 </li>
                                 <li>
                                     <label htmlFor="date-seen">Date seen:</label>
-                                    <input type="date" id="date-seen" defaultValue={this.state.player.date} required />
+                                    <input type="date" id="date-seen" defaultValue={this.createDefaultDate()} required />
                                 </li>
                                 <li>
                                     <label htmlFor="phone-number">Phone:</label>

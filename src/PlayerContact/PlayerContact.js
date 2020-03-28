@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default function renderPlayerInfo(info) {
-
+    console.log(info)
 
     return (
         <ul className='info-list'>
