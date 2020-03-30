@@ -67,7 +67,7 @@ class Landing extends Component {
 
                                 <li>
                                     <label htmlFor='password'>Password</label>
-                                    <input type='text' id='password' required />
+                                    <input type='password' id='password' required />
                                 </li>
                             </ul>
 
@@ -77,7 +77,11 @@ class Landing extends Component {
 
                         <p>
                             or <br />
-                            <Link to='/login'>Log in</Link>
+                            <button>
+                                <Link to='/main'>
+                                    Demo
+                                    </Link>
+                            </button>
                         </p>
                     </section>
                 </main>

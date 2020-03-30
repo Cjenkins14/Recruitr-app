@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Landing from './Landing/Landing';
-import Login from './Login/Login';
 import Main from './Main/Main';
 import SchoolMain from './SchoolMain/SchoolMain';
 import PlayerInfo from './PlayerInfo/PlayerInfo'
@@ -113,9 +112,6 @@ class App extends Component {
                     <Route
                         exact path='/'
                         component={Landing} />
-                    <Route
-                        path='/login'
-                        component={Login} />
                     <Route
                         path='/main'
                         component={Main} />

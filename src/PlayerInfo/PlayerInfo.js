@@ -63,6 +63,7 @@ class PlayerInfo extends Component {
         return player
     }
 
+
     componentDidMount() {
         const id = this.props.match.params.id
         this.setState({
@@ -73,6 +74,7 @@ class PlayerInfo extends Component {
 
     render() {
         const id = this.props.match.params.id
+
         return (
             <div className='player-info'>
                 <main role="main">

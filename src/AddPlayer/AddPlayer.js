@@ -89,7 +89,7 @@ class AddPlayer extends Component {
                                     </select>
                                 </li>
                                 <li>
-                                    <label htmlFor='grad-date'>Grad Date:</label>
+                                    <label htmlFor='grad-date'>Grad Year:</label>
                                     <input type='number' id='grad-date' required />
                                 </li>
                                 <li>
@@ -143,7 +143,7 @@ class AddPlayer extends Component {
                             </ul>
                         </fieldset>
                         <label className='notes-textarea' htmlFor="eval-notes">Notes</label>
-                        <input className="eval" type="textarea" id="eval-notes" /> <br />
+                        <textarea className="eval" id="eval-notes" /> <br />
                         <button
                             type="reset"
                             value='Reset form'

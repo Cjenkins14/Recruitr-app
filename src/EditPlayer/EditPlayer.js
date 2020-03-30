@@ -127,7 +127,7 @@ class EditPlayer extends Component {
                                     </select>
                                 </li>
                                 <li>
-                                    <label htmlFor='grad-date'>Grad Date:</label>
+                                    <label htmlFor='grad-date'>Grad Year:</label>
                                     <input type='number' id='grad-date' defaultValue={this.state.player.graddate} required />
                                 </li>
                                 <li>
@@ -181,9 +181,8 @@ class EditPlayer extends Component {
                             </ul>
                         </fieldset>
                         <label className='notes-textarea' htmlFor="eval-notes">Notes</label>
-                        <input
+                        <textarea
                             className="eval"
-                            type="textarea"
                             id="eval-notes"
                             defaultValue={this.state.player.notes} /> <br />
                         <button type="reset">Clear</button>
