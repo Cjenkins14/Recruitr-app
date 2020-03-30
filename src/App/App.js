@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import Landing from './Landing/Landing';
-import Main from './Main/Main';
-import SchoolMain from './SchoolMain/SchoolMain';
-import PlayerInfo from './PlayerInfo/PlayerInfo'
-import AddPlayer from './AddPlayer/AddPlayer'
-import AddSchool from './AddSchool/AddSchool'
-import EditPlayer from './EditPlayer/EditPlayer'
-import ApiContext from './ApiContext'
-import config from './config'
+import Landing from '../Landing/Landing';
+import Main from '../Main/Main';
+import SchoolMain from '../SchoolMain/SchoolMain';
+import PlayerInfo from '../PlayerInfo/PlayerInfo'
+import AddPlayer from '../AddPlayer/AddPlayer'
+import AddSchool from '../AddSchool/AddSchool'
+import EditPlayer from '../EditPlayer/EditPlayer'
+import ApiContext from '../ApiContext'
+import config from '../config'
 
 class App extends Component {
     constructor(props) {

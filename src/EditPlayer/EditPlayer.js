@@ -81,10 +81,11 @@ class EditPlayer extends Component {
 
     renderSchoolSelect() {
         const schools = this.context.schools
+        console.log(schools)
         const selected = this.state.player.schoolid
-        console.log(selected)
+        console.log(typeof selected)
         return (Object.values(schools).map(school => {
-            if (school.schoolid !== Number(selected)) {
+            if (school.id !== selected) {
                 return <option name="school-id" value={school.id}>{school.name}</option>
             } else {
                 return <option name="school-id" value={school.id} selected>{school.name}</option>
@@ -123,6 +124,7 @@ class EditPlayer extends Component {
                                 <li>
                                     <label htmlFor='player-school'>School:</label>
                                     <select id='player-school' required>
+
                                         {this.renderSchoolSelect()}
                                     </select>
                                 </li>

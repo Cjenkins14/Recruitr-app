@@ -42,47 +42,12 @@ class Landing extends Component {
                     </section>
 
                     <section>
-                        <h2>Get Recruiting!</h2>
-                        <form className="signup-form">
-                            <ul className="input-list">
-                                <li>
-                                    <label htmlFor='first-name'>First name</label>
-                                    <input type='text' id='first-name' required />
-                                </li>
 
-                                <li>
-                                    <label htmlFor='last-name'>Last name</label>
-                                    <input type='text' id='last-name' required />
-                                </li>
-
-                                <li>
-                                    <label htmlFor='school-name'>School Name</label>
-                                    <input type='text' id='school-name' required />
-                                </li>
-
-                                <li>
-                                    <label htmlFor='email'>Email</label>
-                                    <input type='email' id='email' required />
-                                </li>
-
-                                <li>
-                                    <label htmlFor='password'>Password</label>
-                                    <input type='password' id='password' required />
-                                </li>
-                            </ul>
-
-
-                        </form>
-                        <button type="submit">Sign up</button>
-
-                        <p>
-                            or <br />
-                            <button>
-                                <Link to='/main'>
-                                    Demo
-                                    </Link>
-                            </button>
-                        </p>
+                        <button>
+                            <Link to='/main'>
+                                Demo
+                            </Link>
+                        </button>
                     </section>
                 </main>
             </div>

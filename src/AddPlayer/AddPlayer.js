@@ -60,6 +60,11 @@ class AddPlayer extends Component {
         })
         )
     }
+    createDefaultDate() {
+        var date = new Date();
+        var min_date = date.toISOString().slice(0, 10)
+        return min_date
+    }
 
 
     render() {
@@ -105,7 +110,7 @@ class AddPlayer extends Component {
                                 </li>
                                 <li>
                                     <label htmlFor="date-seen">Date seen:</label>
-                                    <input type="date" id="date-seen" required />
+                                    <input type="date" id="date-seen" defaultValue={this.createDefaultDate()} required />
                                 </li>
                                 <li>
                                     <label htmlFor="phone-number">Phone:</label>

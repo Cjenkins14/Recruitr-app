@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-    Navbar,
+    Nav,
     NavLink,
     NavItem,
 
@@ -18,12 +18,12 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Navbar color='light'>
+            <Nav color='light'>
                 <NavItem>
                     <NavLink href='/main'>Recruitr</NavLink>
                 </NavItem>
                 <NavItem onClick={this.goBack}>Go back</NavItem>
-            </Navbar>
+            </Nav>
         )
     }
 }
