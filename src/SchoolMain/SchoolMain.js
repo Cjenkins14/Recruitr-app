@@ -107,8 +107,9 @@ class SchoolMain extends Component {
                         <header role="banner">
                             <h1>{this.state.school.name}</h1>
                         </header>
+                        <h2 className='select-head'>Select a recruit</h2>
                         <section className="recruits">
-                            <h2>Select a recruit</h2>
+
                             <ul className="recruit-list">
                                 {this.renderPlayers()}
                             </ul>

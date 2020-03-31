@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NavBar from '../Nav/Nav'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import './EditPlayer.css'
 class EditPlayer extends Component {
     constructor(props) {
         super(props)
@@ -81,9 +82,7 @@ class EditPlayer extends Component {
 
     renderSchoolSelect() {
         const schools = this.context.schools
-        console.log(schools)
         const selected = this.state.player.schoolid
-        console.log(typeof selected)
         return (Object.values(schools).map(school => {
             if (school.id !== selected) {
                 return <option name="school-id" value={school.id}>{school.name}</option>
@@ -107,17 +106,17 @@ class EditPlayer extends Component {
             <main role="main">
                 <NavBar history={this.props.history} />
                 <header role="banner">
-                    <h1>Recruitr</h1>
+                    <h1>{this.state.player.name}</h1>
                 </header>
                 <section>
-                    <h2>{this.state.player.name}</h2>
+
                     <form className="player-form" onSubmit={this.handleSubmit}>
                         <fieldset>
                             <legend>Recruit Info</legend>
                             <ul className="input-list">
                                 <li>
                                     <label htmlFor='player-name'>
-                                        Recruit Name
+                                        Recruit Name:
                                         </label>
                                     <input type='text' id='player-name' defaultValue={this.state.player.name} />
                                 </li>
@@ -181,7 +180,7 @@ class EditPlayer extends Component {
                                     <input type="number" id="pop-time" defaultValue={this.state.player.poptime} />
                                 </li>
                             </ul>
-                            <label className='notes-textarea' htmlFor="eval-notes">Notes</label> <br />
+                            <label className='notes-textarea' htmlFor="eval-notes">Notes:</label> <br />
                             <textarea
                                 className="eval"
                                 id="eval-notes"

@@ -2,10 +2,7 @@
   box-sizing: border-box;
   
 }
-/* label { */
-  /* width: 240px; */
-  /* display: inline-block; */
-/* } */
+
 .submit-button, .reset-button {
   background-color: #BF0D3E; 
   border: 0;
@@ -25,16 +22,67 @@ body {
   text-align: center;
   line-height: 1.5;
 }
+form {
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+fieldset {
+  margin: 10px 0;
+  padding: 10px;
+}
+
 .input-list {
   list-style: none;
-  text-align: center;
+  margin: 0;
   padding: 0;
-  margin-left: 20%;
-  margin-right: 20%;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+label {
+  width: 40%;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+input, select {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid gray;
+  margin: 0;
+  padding: 0px;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
   width: 60%;
 }
 
+input { padding: 5px; }
 
+select { padding: 5px 0; }
+
+option { padding: 0 5px; }
+
+textarea {
+  width: 100%;
+  margin: 10px 0 0 0;
+  padding: 5px;
+  box-sizing: border-box;
+  display: block;
+  border: 1px solid gray;
+}
+
+
+@media screen and (min-width: 540px) {
+  
+ .submit-button, .reset-button {
+  height: 10vh;
+  width: 20%;
+}
+
+}
 
 
 

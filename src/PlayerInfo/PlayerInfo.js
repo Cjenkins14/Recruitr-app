@@ -83,7 +83,7 @@ class PlayerInfo extends Component {
                         <h1>{this.state.player.name}</h1>
 
                     </header>
-                    <section className="player-info">
+                    <section className="player">
                         <div className="player-info">
                             {PlayerContact(this.state.player)}
                         </div>
@@ -91,20 +91,22 @@ class PlayerInfo extends Component {
                         <div className="player-stats">
                             {PlayerStats(this.state.player)}
                         </div>
-                        {VidPlayer(this.state.player)}
                     </section>
-                    <button
-                        className='delete-player'
-                        type='button'
-                        onClick={this.handleClickDelete}
-                    >
-                        Delete
+                    <div className='vid-player'>
+                        {VidPlayer(this.state.player)}
+                        <button
+                            className='delete-player'
+                            type='button'
+                            onClick={this.handleClickDelete}
+                        >
+                            Delete
                     </button>
-                    <Link to={`/editplayer/${id}`}>
-                        <button className='edit-player'>
-                            Edit
+                        <Link to={`/editplayer/${id}`}>
+                            <button className='edit-player'>
+                                Edit
                         </button>
-                    </Link>
+                        </Link>
+                    </div>
                 </main>
             </div>
         )

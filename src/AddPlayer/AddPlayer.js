@@ -87,7 +87,7 @@ class AddPlayer extends Component {
                                     <input type='text' id='player-name' required autoFocus />
                                 </li>
                                 <li>
-                                    <label htmlFor='player-school'>School:</label> <br />
+                                    <label htmlFor='player-school'>School:</label>
                                     <select id='player-school' required>
                                         {this.renderSchoolSelect()}
                                     </select>
@@ -101,7 +101,7 @@ class AddPlayer extends Component {
                                     <input type="text" id="position" required />
                                 </li>
                                 <li>
-                                    <label htmlFor="bat-throw">Bat/Throw:</label> <br />
+                                    <label htmlFor="bat-throw">Bat/Throw:</label>
                                     <select id="bat-throw" required>
                                         <option>Bat</option>
                                         <option>Throw</option>
@@ -145,7 +145,7 @@ class AddPlayer extends Component {
                                     <input type="number" id="pop-time" />
                                 </li>
                             </ul>
-                            <label className='notes-textarea' htmlFor="eval-notes">Notes</label> <br />
+                            <label className='notes-textarea' htmlFor="eval-notes">Notes:</label> <br />
                             <textarea className="eval" id="eval-notes" /> <br />
                         </fieldset>
 

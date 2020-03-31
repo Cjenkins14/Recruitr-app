@@ -54,7 +54,7 @@ class AddSchool extends Component {
 
                         <ul className="input-list">
                             <li>
-                                <label htmlFor='school-name'>School Name</label>
+                                <label className='school-name' htmlFor='school-name'>School Name:</label>
                                 <input type='text' id='school-name' required autoFocus />
                             </li>
                         </ul>

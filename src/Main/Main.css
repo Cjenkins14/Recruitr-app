@@ -36,8 +36,8 @@ margin-top: 5%;
   border: 0;
   border-radius: 3px;
   margin: 10px;
-  height: 3em;
-  width: 6em;
+  height: 10vh;
+  width: 35%;
 }
 
 
@@ -52,4 +52,19 @@ body {
 
  a:hover {
   color: red;
+}
+
+@media screen and (min-width: 650px) {
+  
+ .school-button {
+  height: 10vh;
+  width: 35%;
+}
+ul.school-list {
+  columns: 2;
+}
+.add-button {
+   height: 10vh;
+  width: 20%;
+}
 }

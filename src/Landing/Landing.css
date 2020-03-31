@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-/* label { */
-  /* width: 240px; */
-  /* display: inline-block; */
-/* } */
+
 
 .landing-section {
   font-family: "Open Sans",
@@ -51,4 +48,12 @@ body {
 }
 html {
   background-color: #BF0D3E;
+}
+
+@media screen and (min-width: 600px) {
+  
+ .demo-button {
+  height: 10vh;
+  width: 35%;
+}
 }

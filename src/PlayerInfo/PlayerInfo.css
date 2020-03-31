@@ -1,5 +1,6 @@
 .info-list, .stat-list {
   list-style: none;
+  padding: 0px;
 }
 
 .delete-player, .edit-player {
@@ -13,4 +14,14 @@
 }
 .delete-player:hover, .edit-player:hover {
   background-color: #FFFFFF;
+}
+@media screen and (min-width: 600px) {
+  
+ .edit-player, .delete-player {
+  height: 10vh;
+  width: 20%;
+}
+.player {
+  columns: 2;
+}
 }
