@@ -8,9 +8,7 @@ import {
 import './Nav.css'
 
 class NavBar extends Component {
-    constructor(props) {
-        super(props)
-    }
+
 
     goBack = () => {
         this.props.history.goBack()
@@ -18,11 +16,11 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Nav color='light'>
+            <Nav className='nav-bar' color='light'>
+                <NavItem onClick={this.goBack} className='back'><i class="fas fa-arrow-left"></i></NavItem>
                 <NavItem>
-                    <NavLink href='/main'>Recruitr</NavLink>
+                    <NavLink href='/main' className='home'>Recruitr</NavLink>
                 </NavItem>
-                <NavItem onClick={this.goBack}>Go back</NavItem>
             </Nav>
         )
     }

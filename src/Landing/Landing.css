@@ -2,53 +2,53 @@
   box-sizing: border-box;
 }
 
-label {
-  width: 240px;
-  display: inline-block;
-}
+/* label { */
+  /* width: 240px; */
+  /* display: inline-block; */
+/* } */
 
-.landing {
+.landing-section {
   font-family: "Open Sans",
   sans-serif; 
-  font-size: 20px;
-  color: #444;
+  font-size: 1.5em;
+  color: white;
   text-align: center;
   line-height: 1.5;
 }
 
-.input-list {
-  list-style: none;
-  align-content: center;
-}
-.signup-form {
-  text-align: left;
-
-}
-
-nav,
-footer {
-  padding: 1% 0;
-  background-color: #aaa;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-
-
-header {
-  padding: 12% 0;
+.landing-head {
+  padding: 10% 0;
+  background-color: #041E42;
+  color: white;
+  font-size: 2em;
 }
 
 section {
   min-height: 200px;
-  padding: 6% 0;
-  background-color: #bbb;
+  padding: 6% ;
+  background-color: #041E42;
 }
 
+.demo-button {
+  background-color: #BF0D3E; 
+  border: 0;
+  border-radius: 5px;
+  font-size: 1em;
+  height: 2em;
+  width: 4em;
+}
+.demo-button:hover {
+  background-color: #FFF;
+}
 
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+body {
+  margin: 5%;
+}
+html {
+  background-color: #BF0D3E;
+}

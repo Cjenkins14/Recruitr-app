@@ -94,14 +94,14 @@ class PlayerInfo extends Component {
                         {VidPlayer(this.state.player)}
                     </section>
                     <button
-                        className='player-delete'
+                        className='delete-player'
                         type='button'
                         onClick={this.handleClickDelete}
                     >
                         Delete
                     </button>
                     <Link to={`/editplayer/${id}`}>
-                        <button>
+                        <button className='edit-player'>
                             Edit
                         </button>
                     </Link>

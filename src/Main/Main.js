@@ -19,8 +19,11 @@ class Main extends Component {
         return Object.values(schools).map(school => (
             <li>
                 <Link to={`/schoolmain/${school.id}`}>
-                    {school.name}
+                    <button className='school-button'>
+                        {school.name}
+                    </button>
                 </Link>
+
             </li>
         )
 
@@ -33,15 +36,15 @@ class Main extends Component {
                 <NavBar history={this.props.history} />
                 <main role="main">
                     <header role="banner">
-                        <h1>Select a school</h1>
+                        <h1 className='school-select'>Select a school</h1>
                     </header>
-                    <section className="prospects">
-                        <ul className="prospect-list">
+                    <section className="schools">
+                        <ul className="school-list">
                             {this.renderSchools()}
                         </ul>
                     </section>
                     <Link to='/addschool'>
-                        <button>Add</button>
+                        <button className='add-button'>Add</button>
                     </Link>
                 </main>
             </div>

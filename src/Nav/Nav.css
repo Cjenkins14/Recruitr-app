@@ -1,4 +1,18 @@
-li {
+
+li.back.nav-item {
+    text-align: left;
+}
+
+.home, .back {
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.nav-bar {
+    display: inline-block;
     list-style: none;
-    
+}
+
+button.school-button:hover {
+    background-color: #BF0D3E; 
 }

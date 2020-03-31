@@ -45,21 +45,21 @@ class AddSchool extends Component {
             <main role="main">
                 <NavBar history={this.props.history} />
                 <header role="banner">
-                    <h1>Recruitr</h1>
+                    <h1>Add a school</h1>
                 </header>
                 <section>
                     <form
                         onSubmit={this.handleSubmit}
                         className="school-form">
-                        <label>Add a school</label>
+
                         <ul className="input-list">
                             <li>
                                 <label htmlFor='school-name'>School Name</label>
                                 <input type='text' id='school-name' required autoFocus />
                             </li>
                         </ul>
-                        <button type="reset">Clear</button>
-                        <button type="submit">Add</button>
+                        <button className='reset-button' type="reset">Clear</button>
+                        <button className='submit-button' type="submit">Add</button>
                     </form>
                 </section>
             </main>

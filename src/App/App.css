@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: #FFF;
+}
+a:hover {
+   color: #00F
+}
+
+body {
+  margin: 5%;
+}
+html {
+  background-color: #BF0D3E;
+}

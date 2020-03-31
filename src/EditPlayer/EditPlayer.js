@@ -181,14 +181,15 @@ class EditPlayer extends Component {
                                     <input type="number" id="pop-time" defaultValue={this.state.player.poptime} />
                                 </li>
                             </ul>
+                            <label className='notes-textarea' htmlFor="eval-notes">Notes</label> <br />
+                            <textarea
+                                className="eval"
+                                id="eval-notes"
+                                defaultValue={this.state.player.notes} /> <br />
                         </fieldset>
-                        <label className='notes-textarea' htmlFor="eval-notes">Notes</label>
-                        <textarea
-                            className="eval"
-                            id="eval-notes"
-                            defaultValue={this.state.player.notes} /> <br />
-                        <button type="reset">Clear</button>
-                        <button type="submit">Update</button>
+
+                        <button className='reset-button' type="reset">Clear</button>
+                        <button className='submit-button' type="submit">Update</button>
                     </form>
                 </section>
             </main>

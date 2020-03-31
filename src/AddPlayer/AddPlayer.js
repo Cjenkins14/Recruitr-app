@@ -73,10 +73,9 @@ class AddPlayer extends Component {
             <main role="main">
                 <NavBar history={this.props.history} />
                 <header role="banner">
-                    <h1>Recruitr</h1>
+                    <h1>Add a recruit</h1>
                 </header>
                 <section>
-                    <h2>Add a recruit</h2>
                     <form className="player-form" onSubmit={this.handleSubmit}>
                         <fieldset>
                             <legend>Recruit Info</legend>
@@ -88,7 +87,7 @@ class AddPlayer extends Component {
                                     <input type='text' id='player-name' required autoFocus />
                                 </li>
                                 <li>
-                                    <label htmlFor='player-school'>School:</label>
+                                    <label htmlFor='player-school'>School:</label> <br />
                                     <select id='player-school' required>
                                         {this.renderSchoolSelect()}
                                     </select>
@@ -102,7 +101,7 @@ class AddPlayer extends Component {
                                     <input type="text" id="position" required />
                                 </li>
                                 <li>
-                                    <label htmlFor="bat-throw">Bat/Throw:</label>
+                                    <label htmlFor="bat-throw">Bat/Throw:</label> <br />
                                     <select id="bat-throw" required>
                                         <option>Bat</option>
                                         <option>Throw</option>
@@ -146,14 +145,23 @@ class AddPlayer extends Component {
                                     <input type="number" id="pop-time" />
                                 </li>
                             </ul>
+                            <label className='notes-textarea' htmlFor="eval-notes">Notes</label> <br />
+                            <textarea className="eval" id="eval-notes" /> <br />
                         </fieldset>
-                        <label className='notes-textarea' htmlFor="eval-notes">Notes</label>
-                        <textarea className="eval" id="eval-notes" /> <br />
+
                         <button
+                            className='reset-button'
                             type="reset"
                             value='Reset form'
-                        >Clear</button>
-                        <button type="Add">Add</button>
+                        >
+                            Clear
+                        </button>
+                        <button
+                            className='add-button'
+                            type="Add"
+                        >
+                            Add
+                        </button>
                     </form>
                 </section>
             </main>

@@ -85,11 +85,13 @@ class SchoolMain extends Component {
 
         return (
             Object.values(this.state.players).map(player =>
-                <li>
+                <li className='player-list'>
                     <Link
                         to={`/player/${player.playerid}`}
                     >
-                        {player.name}
+                        <button className='player-button'>
+                            {player.name}
+                        </button>
                     </Link>
                 </li>
             ))
@@ -105,14 +107,14 @@ class SchoolMain extends Component {
                         <header role="banner">
                             <h1>{this.state.school.name}</h1>
                         </header>
-                        <section className="prospects">
+                        <section className="recruits">
                             <h2>Select a recruit</h2>
-                            <ul className="prospect-list">
+                            <ul className="recruit-list">
                                 {this.renderPlayers()}
                             </ul>
                         </section>
                         <Link to='/addplayer'>
-                            <button>Add</button>
+                            <button className='player-add'>Add</button>
                         </Link>
                         <button
                             className='school-delete'
