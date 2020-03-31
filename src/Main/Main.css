@@ -39,13 +39,13 @@ margin-top: 5%;
   height: 10vh;
   width: 35%;
 }
-
+button {
+  font-family: 'Roboto', sans-serif;
+}
 
 
 body {
   background: #041E42;
-  font-family: "Open Sans",
-  sans-serif; 
   text-align: center;
   line-height: 1.5;
 }

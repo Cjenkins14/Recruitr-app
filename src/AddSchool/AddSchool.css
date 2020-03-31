@@ -16,15 +16,13 @@
   background-color: #FFFFFF;
 }
 body {
-  font-family: "Open Sans",
-  sans-serif; 
   color: #ffff;
   text-align: center;
   line-height: 1.5;
 }
 form {
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 fieldset {
@@ -55,7 +53,7 @@ input, select {
   margin: 0;
   padding: 0px;
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+ font-family: 'Roboto', sans-serif;
   width: 60%;
 }
 

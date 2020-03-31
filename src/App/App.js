@@ -9,6 +9,7 @@ import AddSchool from '../AddSchool/AddSchool'
 import EditPlayer from '../EditPlayer/EditPlayer'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import './App.css'
 
 class App extends Component {
     constructor(props) {
