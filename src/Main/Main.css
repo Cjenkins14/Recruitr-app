@@ -23,9 +23,9 @@ margin-top: 5%;
   border: 0;
   border-radius: 5px;
   font-size: 1em;
-  height: 40px;
-  width: 60px;
-  margin-bottom: 10px;
+  height: 6em;
+  width: 10em;
+  
 }
 .add-button:hover {
   background-color: #FFFFFF;
@@ -63,8 +63,5 @@ body {
 ul.school-list {
   columns: 2;
 }
-.add-button {
-   height: 10vh;
-  width: 20%;
-}
+
 }

@@ -8,8 +8,8 @@
   border: 0;
   border-radius: 5px;
   font-size: 1em;
-  height: 40px;
-  width: 60px;
+  height: 6em;
+  width: 10em;
   margin: 10px;
 }
 .submit-button:hover, .reset-button:hover {
@@ -20,63 +20,20 @@ body {
   text-align: center;
   line-height: 1.5;
 }
-form {
-  font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
-}
 
-fieldset {
-  margin: 10px 0;
-  padding: 10px;
-}
-
-.input-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-label {
-  width: 40%;
-  display: inline-block;
-  font-size: 1rem;
-}
-
-input, select {
-  box-sizing: border-box;
-  display: inline-block;
-  border: 1px solid gray;
-  margin: 0;
-  padding: 0px;
-  font-size: 1rem;
- font-family: 'Roboto', sans-serif;
-  width: 60%;
-}
-
-input { padding: 5px; }
-
-select { padding: 5px 0; }
-
-option { padding: 0 5px; }
-
-textarea {
-  width: 100%;
-  margin: 10px 0 0 0;
-  padding: 5px;
-  box-sizing: border-box;
-  display: block;
-  border: 1px solid gray;
+.school-name {
+  padding-bottom: 10%;
 }
 
 
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 600px) {
   
  .submit-button, .reset-button {
   height: 10vh;
+  width: 20%;
+}
+.add-button {
+   height: 10vh;
   width: 20%;
 }
 

@@ -148,20 +148,22 @@ class AddPlayer extends Component {
                             <label className='notes-textarea' htmlFor="eval-notes">Notes:</label> <br />
                             <textarea className="eval" id="eval-notes" /> <br />
                         </fieldset>
+                        <section>
+                            <button
+                                className='add-button'
+                                type="Add"
+                            >
+                                Add
+                        </button>
+                            <button
+                                className='reset-button'
+                                type="reset"
+                                value='Reset form'
+                            >
+                                Clear
+                        </button>
+                        </section>
 
-                        <button
-                            className='reset-button'
-                            type="reset"
-                            value='Reset form'
-                        >
-                            Clear
-                        </button>
-                        <button
-                            className='add-button'
-                            type="Add"
-                        >
-                            Add
-                        </button>
                     </form>
                 </section>
             </main>

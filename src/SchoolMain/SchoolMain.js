@@ -114,16 +114,18 @@ class SchoolMain extends Component {
                                 {this.renderPlayers()}
                             </ul>
                         </section>
-                        <Link to='/addplayer'>
-                            <button className='player-add'>Add</button>
-                        </Link>
-                        <button
-                            className='school-delete'
-                            type='button'
-                            onClick={this.handleClickDelete}
-                        >
-                            Delete
-                </button>
+                        <section>
+                            <Link to='/addplayer'>
+                                <button className='player-add'>Add</button>
+                            </Link>
+                            <button
+                                className='school-delete'
+                                type='button'
+                                onClick={this.handleClickDelete}
+                            >
+                                Delete
+                        </button>
+                        </section>
                     </div>
                 )}
             </ApiContext.Consumer>

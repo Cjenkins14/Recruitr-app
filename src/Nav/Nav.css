@@ -8,7 +8,9 @@ li.back.nav-item {
     color: #ffffff;
 }
 .back {
-    margin-left: 5%;
+    padding-left: 5%;
+    padding-top: 5%;
+    margin-bottom: 0;
 }
 .home {
     text-align: center;

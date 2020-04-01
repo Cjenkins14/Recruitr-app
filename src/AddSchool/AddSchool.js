@@ -58,8 +58,8 @@ class AddSchool extends Component {
                                 <input type='text' id='school-name' required autoFocus />
                             </li>
                         </ul>
-                        <button className='reset-button' type="reset">Clear</button>
                         <button className='submit-button' type="submit">Add</button>
+                        <button className='reset-button' type="reset">Clear</button>
                     </form>
                 </section>
             </main>

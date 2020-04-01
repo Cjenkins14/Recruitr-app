@@ -186,9 +186,8 @@ class EditPlayer extends Component {
                                 id="eval-notes"
                                 defaultValue={this.state.player.notes} /> <br />
                         </fieldset>
-
-                        <button className='reset-button' type="reset">Clear</button>
                         <button className='submit-button' type="submit">Update</button>
+                        <button className='reset-button' type="reset">Clear</button>
                     </form>
                 </section>
             </main>

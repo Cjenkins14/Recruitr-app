@@ -22,10 +22,7 @@ export default function PlayerStats(stats) {
             <li>
                 Pop time: {stats.poptime}
             </li>
-            <li>
-                Notes: <br />
-                {stats.notes}
-            </li>
+
         </ul>
     )
 }

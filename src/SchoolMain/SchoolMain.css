@@ -1,10 +1,10 @@
 .player-add, .school-delete {
   background-color: #BF0D3E; 
   border: 0;
-  border-radius: 5px;
+   border-radius: 5px;
   font-size: 1em;
-  height: 40px;
-  width: 60px;
+  height: 6em;
+  width: 10em;
   margin: 10px;
 }
 .player-add:hover, .school-delete:hover {

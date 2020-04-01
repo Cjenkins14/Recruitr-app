@@ -43,9 +43,11 @@ class Main extends Component {
                             {this.renderSchools()}
                         </ul>
                     </section>
-                    <Link to='/addschool'>
-                        <button className='add-button'>Add</button>
-                    </Link>
+                    <section>
+                        <Link to='/addschool'>
+                            <button className='add-button'>Add</button>
+                        </Link>
+                    </section>
                 </main>
             </div>
         )

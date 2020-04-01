@@ -12,7 +12,7 @@
 }
 
 .landing-head {
-  padding: 10% 0;
+  padding-top: 10%;
   background-color: #041E42;
   color: white;
   font-size: 2em;
@@ -30,8 +30,8 @@ section {
   border: 0;
   border-radius: 5px;
   font-size: 1em;
-  height: 2em;
-  width: 4em;
+  height: 6em;
+  width: 10em;
 }
 .demo-button:hover {
   background-color: #FFF;
