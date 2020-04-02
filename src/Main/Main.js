@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import './Main.css'
-import { Link } from 'react-router-dom'
-import NavBar from '../Nav/Nav'
-import ApiContext from '../ApiContext'
+import React, { Component } from 'react';
+import './Main.css';
+import { Link } from 'react-router-dom';
+import NavBar from '../Nav/Nav';
+import ApiContext from '../ApiContext';
 
 class Main extends Component {
     constructor(props) {
@@ -10,9 +10,9 @@ class Main extends Component {
         this.state = {
             schools: this.props.schools
         }
-    }
+    };
 
-    static contextType = ApiContext
+    static contextType = ApiContext;
 
     renderSchools() {
         const schools = this.context.schools
@@ -25,10 +25,8 @@ class Main extends Component {
                 </Link>
 
             </li>
-        )
-
-        )
-    }
+        ))
+    };
 
     render() {
         return (
@@ -52,6 +50,6 @@ class Main extends Component {
             </div>
         )
     }
-}
+};
 
 export default Main;

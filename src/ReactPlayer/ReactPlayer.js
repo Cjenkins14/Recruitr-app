@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactPlayer from 'react-player'
+import React from 'react';
+import ReactPlayer from 'react-player';
 
 export default function VidPlayer(player) {
     return (
@@ -10,4 +10,4 @@ export default function VidPlayer(player) {
                 height='300px' />
         </div>
     )
-}
+};

@@ -3,13 +3,13 @@ import { Route } from 'react-router-dom';
 import Landing from '../Landing/Landing';
 import Main from '../Main/Main';
 import SchoolMain from '../SchoolMain/SchoolMain';
-import PlayerInfo from '../PlayerInfo/PlayerInfo'
-import AddPlayer from '../AddPlayer/AddPlayer'
-import AddSchool from '../AddSchool/AddSchool'
-import EditPlayer from '../EditPlayer/EditPlayer'
-import ApiContext from '../ApiContext'
-import config from '../config'
-import './App.css'
+import PlayerInfo from '../PlayerInfo/PlayerInfo';
+import AddPlayer from '../AddPlayer/AddPlayer';
+import AddSchool from '../AddSchool/AddSchool';
+import EditPlayer from '../EditPlayer/EditPlayer';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import './App.css';
 
 class App extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
             school: [],
             playerInfo: []
         }
-    }
+    };
 
 
 
@@ -48,8 +48,7 @@ class App extends Component {
             .catch(error => {
                 console.log(error)
             })
-
-    }
+    };
 
     handleNewSchool = (newSchool) => {
         this.setState({
@@ -58,7 +57,8 @@ class App extends Component {
                     newSchool]
         })
         console.log(this.state.school)
-    }
+    };
+
     handleNewPlayer = (newPlayer) => {
         this.setState({
             playerInfo: [
@@ -67,19 +67,22 @@ class App extends Component {
             ]
 
         }, console.log(this.state))
-    }
+    };
+
     handleDeletePlayer = (playerId) => {
         this.setState({
             playerInfo: this.state.playerInfo.filter(player => player.playerid !== Number(playerId))
         })
-    }
+    };
+
     handleDeleteSchool = schoolId => {
         console.log(typeof schoolId)
         console.log(this.state.school)
         this.setState({
             school: this.state.school.filter(school => school.id !== Number(schoolId))
         }, () => { console.log(this.state.school) })
-    }
+    };
+
     handlePlayerUpdate = (update, id) => {
         let updatedPlayer = update.find(player => player.playerid === Number(id));
         let newPlayers = this.state.playerInfo.map(player => {
@@ -93,7 +96,7 @@ class App extends Component {
         this.setState({
             playerInfo: newPlayers
         });
-    }
+    };
 
 
     render() {
@@ -106,7 +109,7 @@ class App extends Component {
             deleteSchool: this.handleDeleteSchool,
             handlePlayerUpdate: this.handlePlayerUpdate
         }
-        console.log(value)
+
         return (
             <ApiContext.Provider value={value}>
                 <div className='App'>
@@ -134,8 +137,8 @@ class App extends Component {
                 </div>
             </ApiContext.Provider>
         )
-    }
-}
+    };
+};
 
 
 export default App;

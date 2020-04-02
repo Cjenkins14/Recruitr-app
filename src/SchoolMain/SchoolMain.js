@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import './SchoolMain.css'
-import { Link } from 'react-router-dom'
-import ApiContext from '../ApiContext'
-import NavBar from '../Nav/Nav'
-import config from '../config'
+import React, { Component } from 'react';
+import './SchoolMain.css';
+import { Link } from 'react-router-dom';
+import ApiContext from '../ApiContext';
+import NavBar from '../Nav/Nav';
+import config from '../config';
 
 class SchoolMain extends Component {
     constructor(props) {
@@ -12,7 +12,8 @@ class SchoolMain extends Component {
             players: [],
             school: {}
         }
-    }
+    };
+
     static defaultProps = {
         onDeleteSchool: () => { },
         history: {
@@ -21,16 +22,13 @@ class SchoolMain extends Component {
         match: {
             params: {}
         }
-
-    }
+    };
 
     static contextType = ApiContext;
 
     handleClickDelete = e => {
         e.preventDefault()
         const schoolId = this.props.match.params.id
-
-
         fetch(`${config.API_ENDPOINT}/school/${schoolId}`, {
             method: 'DELETE',
             headers: {
@@ -52,37 +50,27 @@ class SchoolMain extends Component {
                     error
                 })
             })
-    }
+    };
 
+    // find player by id to set state
     findPlayers = (key) => {
-
         console.log(this.context)
         const playerInfo = this.context.playerInfo
         console.log(playerInfo)
         const players = Object.values(playerInfo).filter(player => player.schoolid === Number(key))
         console.log(players)
         return players
-    }
+    };
+
+    // find school by id to set state
     findSchool = (key) => {
         const schools = this.context.schools
         const school = schools.find(school => school.id === Number(key))
         console.log(school)
         return school
-    }
-
-    componentDidMount() {
-        const id = this.props.match.params.id
-        this.setState({
-            players: this.findPlayers(id),
-            school: this.findSchool(id)
-        }, () => { console.log(this.state.school, this.state.players) }
-        )
-
-    }
-
+    };
 
     renderPlayers() {
-
         return (
             Object.values(this.state.players).map(player =>
                 <li className='player-list'>
@@ -95,23 +83,34 @@ class SchoolMain extends Component {
                     </Link>
                 </li>
             ))
-    }
+    };
+
+    componentDidMount() {
+        console.log('mounted')
+        const id = this.props.match.params.id
+        this.setState({
+            players: this.findPlayers(id),
+            school: this.findSchool(id)
+        }, () => { console.log(this.state.school, this.state.players) }
+        )
+    };
+
 
     render() {
-
+        console.log(this.state)
         return (
             <ApiContext.Consumer>
                 {(context) => (
                     <div className='school-main'>
                         <NavBar history={this.props.history} />
                         <header role="banner">
-                            <h1>{this.state.school.name}</h1>
+                            {/* <h1>{this.state.school.name}</h1> */}
                         </header>
                         <h2 className='select-head'>Select a recruit</h2>
                         <section className="recruits">
 
                             <ul className="recruit-list">
-                                {this.renderPlayers()}
+                                {this.state.players.length && this.renderPlayers()}
                             </ul>
                         </section>
                         <section>
@@ -132,8 +131,7 @@ class SchoolMain extends Component {
         )
 
     }
-
-}
+};
 
 
 export default SchoolMain;

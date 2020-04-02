@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import './PlayerInfo.css'
-import VidPlayer from '../ReactPlayer/ReactPlayer'
-import PlayerStats from '../PlayerStats/PlayerStats'
-import PlayerContact from '../PlayerContact/PlayerContact'
-import NavBar from '../Nav/Nav'
-import ApiContext from '../ApiContext'
-import config from '../config'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import './PlayerInfo.css';
+import VidPlayer from '../ReactPlayer/ReactPlayer';
+import PlayerStats from '../PlayerStats/PlayerStats';
+import PlayerContact from '../PlayerContact/PlayerContact';
+import NavBar from '../Nav/Nav';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import { Link } from 'react-router-dom';
 
 class PlayerInfo extends Component {
     constructor(props) {
@@ -14,7 +14,8 @@ class PlayerInfo extends Component {
         this.state = {
             player: []
         }
-    }
+    };
+
     static defaultProps = {
         onDeletePlayer: () => { },
         history: {
@@ -23,16 +24,13 @@ class PlayerInfo extends Component {
         match: {
             params: {}
         }
+    };
 
-    }
-
-    static contextType = ApiContext
+    static contextType = ApiContext;
 
     handleClickDelete = e => {
         e.preventDefault()
         const playerId = this.props.match.params.id
-
-
         fetch(`${config.API_ENDPOINT}/player/${playerId}`, {
             method: 'DELETE',
             headers: {
@@ -54,14 +52,14 @@ class PlayerInfo extends Component {
                     error
                 })
             })
-    }
+    };
 
+    // find player by id to set state
     findPlayer = (key) => {
         const playerInfo = this.context.playerInfo
         const player = playerInfo.find(player => player.playerid === Number(key))
-        console.log(player)
         return player
-    }
+    };
 
 
     componentDidMount() {
@@ -69,8 +67,7 @@ class PlayerInfo extends Component {
         this.setState({
             player: this.findPlayer(id)
         }, () => { console.log(this.state.player) })
-
-    }
+    };
 
     render() {
         const id = this.props.match.params.id
@@ -80,7 +77,7 @@ class PlayerInfo extends Component {
                 <main role="main">
                     <NavBar history={this.props.history} />
                     <header role="banner">
-                        <h1>{this.state.player.name}</h1>
+                        {/* <h1>{this.state.player.name}</h1> */}
 
                     </header>
                     <section className="player">
@@ -117,6 +114,6 @@ class PlayerInfo extends Component {
             </div>
         )
     }
-}
+};
 
 export default PlayerInfo;

@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
-import NavBar from '../Nav/Nav'
-import ApiContext from '../ApiContext'
-import config from '../config'
-import './EditPlayer.css'
+import React, { Component } from 'react';
+import NavBar from '../Nav/Nav';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import './EditPlayer.css';
+
+
 class EditPlayer extends Component {
     constructor(props) {
         super(props)
         this.state = {
             player: []
         }
-    }
+    };
 
     static defaultProps = {
         history: {
@@ -18,31 +20,27 @@ class EditPlayer extends Component {
         match: {
             params: {}
         }
-
-    }
-    static contextType = ApiContext
+    };
+    static contextType = ApiContext;
 
 
 
     findPlayer = (key) => {
         const playerInfo = this.context.playerInfo
         const player = playerInfo.find(player => player.playerid === Number(key))
-        console.log(player)
         return player
-    }
+    };
 
     componentDidMount() {
         const id = this.props.match.params.id
         this.setState({
             player: this.findPlayer(id)
         }, () => { console.log(this.state.player) })
-
-    }
+    };
 
     handleSubmit = e => {
         e.preventDefault()
         const id = this.props.match.params.id;
-        console.log(e.target['player-name'])
         const editPlayer = {
             name: e.target['player-name'].value,
             schoolid: e.target['player-school'].value,
@@ -77,9 +75,9 @@ class EditPlayer extends Component {
             .catch(error => {
                 console.error({ error })
             })
-    }
+    };
 
-
+    // render options for select
     renderSchoolSelect() {
         const schools = this.context.schools
         const selected = this.state.player.schoolid
@@ -91,13 +89,14 @@ class EditPlayer extends Component {
             }
         })
         )
-    }
+    };
+
+    // format date for input
     createDefaultDate() {
         var date = new Date();
         var min_date = date.toISOString().slice(0, 10)
         return min_date
-    }
-
+    };
 
     render() {
         console.log(this.state.player)
@@ -194,6 +193,6 @@ class EditPlayer extends Component {
 
         )
     }
-}
+};
 
 export default EditPlayer;

@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 
 
 export default function renderPlayerInfo(info) {
+    // format date for input
     const createDate = () => {
         if (info.date == null) {
             return null
@@ -11,8 +12,9 @@ export default function renderPlayerInfo(info) {
             let newDate = oldDate.toISOString().slice(0, 10)
             return newDate
         }
-    }
-    const dateSeen = createDate()
+    };
+
+    const dateSeen = createDate();
 
     return (
         <ul className='info-list'>
@@ -34,4 +36,4 @@ export default function renderPlayerInfo(info) {
 
         </ul>
     )
-}
+};

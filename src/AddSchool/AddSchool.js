@@ -10,15 +10,15 @@ class AddSchool extends Component {
         history: {
             push: () => { }
         }
-    }
-    static contextType = ApiContext
+    };
+    static contextType = ApiContext;
 
     handleSubmit = e => {
         e.preventDefault()
         const newSchool = {
             name: e.target['school-name'].value
         }
-        fetch(`${config.API_ENDPOINT}/school/add`, {
+        fetch(`${config.API_ENDPOINT}/school`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,8 +36,8 @@ class AddSchool extends Component {
             })
             .catch(error => {
                 console.error({ error })
-            })
-    }
+            });
+    };
 
     render() {
         return (
@@ -65,7 +65,7 @@ class AddSchool extends Component {
             </main>
 
         )
-    }
-}
+    };
+};
 
 export default AddSchool;

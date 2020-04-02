@@ -1,5 +1,5 @@
-import React from 'react'
-import './PlayerStats.css'
+import React from 'react';
+import './PlayerStats.css';
 
 export default function PlayerStats(stats) {
 
@@ -25,6 +25,6 @@ export default function PlayerStats(stats) {
 
         </ul>
     )
-}
+};
 
 

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import './AddPlayer.css'
-import NavBar from '../Nav/Nav'
-import config from '../config'
-import ApiContext from '../ApiContext'
+import React, { Component } from 'react';
+import './AddPlayer.css';
+import NavBar from '../Nav/Nav';
+import config from '../config';
+import ApiContext from '../ApiContext';
 
 class AddPlayer extends Component {
     static defaultProps = {
         history: {
             push: () => { }
         }
-    }
-    static contextType = ApiContext
+    };
+    static contextType = ApiContext;
 
 
     handleSubmit = e => {
@@ -50,21 +50,22 @@ class AddPlayer extends Component {
             .catch(error => {
                 console.error({ error })
             })
-    }
+    };
 
-
+    // render options for select
     renderSchoolSelect() {
         const schools = this.context.schools
         return (Object.values(schools).map(school => {
             return <option name="school-id" value={school.id}>{school.name}</option>
         })
         )
-    }
+    };
+    // format date for input
     createDefaultDate() {
         var date = new Date();
         var min_date = date.toISOString().slice(0, 10)
         return min_date
-    }
+    };
 
 
     render() {
@@ -169,7 +170,7 @@ class AddPlayer extends Component {
             </main>
 
         )
-    }
-}
+    };
+};
 
 export default AddPlayer;
