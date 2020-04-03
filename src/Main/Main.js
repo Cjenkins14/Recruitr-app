@@ -20,7 +20,7 @@ class Main extends Component {
             <li>
                 <Link to={`/schoolmain/${school.id}`}>
                     <button className='school-button'>
-                        {school.name}
+                        {school.schoolname}
                     </button>
                 </Link>
 

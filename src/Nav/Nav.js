@@ -3,8 +3,8 @@ import {
     Nav,
     NavLink,
     NavItem,
-} from 'reactstrap'
-import './Nav.css'
+} from 'reactstrap';
+import './Nav.css';
 
 class NavBar extends Component {
 

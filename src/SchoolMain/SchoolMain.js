@@ -54,11 +54,8 @@ class SchoolMain extends Component {
 
     // find player by id to set state
     findPlayers = (key) => {
-        console.log(this.context)
         const playerInfo = this.context.playerInfo
-        console.log(playerInfo)
         const players = Object.values(playerInfo).filter(player => player.schoolid === Number(key))
-        console.log(players)
         return players
     };
 
@@ -72,7 +69,7 @@ class SchoolMain extends Component {
 
     renderPlayers() {
         return (
-            Object.values(this.state.players).map(player =>
+            Object.values(this.state.school).map(player =>
                 <li className='player-list'>
                     <Link
                         to={`/player/${player.playerid}`}
@@ -84,54 +81,67 @@ class SchoolMain extends Component {
                 </li>
             ))
     };
+    // console.log('mounted')
+    // const id = this.props.match.params.id
+    // this.setState({
+    // players: this.findPlayers(id),
+    // school: this.findSchool(id)
+    // }, () => { console.log(this.state.school, this.state.players) }
+    // )
 
     componentDidMount() {
-        console.log('mounted')
-        const id = this.props.match.params.id
-        this.setState({
-            players: this.findPlayers(id),
-            school: this.findSchool(id)
-        }, () => { console.log(this.state.school, this.state.players) }
-        )
+        let id = this.props.match.params.id
+        fetch(`${config.API_ENDPOINT}/school/${id}`)
+            .then((schoolRes) => {
+                if (!schoolRes.ok)
+                    return schoolRes.json().then(e => Promise.reject(e));
+                return schoolRes.json()
+            })
+            .then((school) => {
+                this.setState({
+                    school: school
+                }, () => { console.log(this.state.school) })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
 
     render() {
         console.log(this.state)
         return (
-            <ApiContext.Consumer>
-                {(context) => (
-                    <div className='school-main'>
-                        <NavBar history={this.props.history} />
-                        <header role="banner">
-                            {/* <h1>{this.state.school.name}</h1> */}
-                        </header>
-                        <h2 className='select-head'>Select a recruit</h2>
-                        <section className="recruits">
 
-                            <ul className="recruit-list">
-                                {this.state.players.length && this.renderPlayers()}
-                            </ul>
-                        </section>
-                        <section>
-                            <Link to='/addplayer'>
-                                <button className='player-add'>Add</button>
-                            </Link>
-                            <button
-                                className='school-delete'
-                                type='button'
-                                onClick={this.handleClickDelete}
-                            >
-                                Delete
+
+            <div className='school-main'>
+                <NavBar history={this.props.history} />
+                <header role="banner">
+                    <h1>{this.state.school.schoolname}</h1>
+                </header>
+                <h2 className='select-head'>Select a recruit</h2>
+                <section className="recruits">
+
+                    <ul className="recruit-list">
+                        {this.state.school.length && this.renderPlayers()}
+                    </ul>
+                </section>
+                <section>
+                    <Link to='/addplayer'>
+                        <button className='player-add'>Add</button>
+                    </Link>
+                    <button
+                        className='school-delete'
+                        type='button'
+                        onClick={this.handleClickDelete}
+                    >
+                        Delete
                         </button>
-                        </section>
-                    </div>
-                )}
-            </ApiContext.Consumer>
+                </section>
+            </div>
         )
-
     }
 };
+
 
 
 export default SchoolMain;

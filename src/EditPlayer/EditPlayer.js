@@ -32,10 +32,21 @@ class EditPlayer extends Component {
     };
 
     componentDidMount() {
-        const id = this.props.match.params.id
-        this.setState({
-            player: this.findPlayer(id)
-        }, () => { console.log(this.state.player) })
+        let id = this.props.match.params.id
+        fetch(`${config.API_ENDPOINT}/player/${id}`)
+            .then((playerRes) => {
+                if (!playerRes.ok)
+                    return playerRes.json().then(e => Promise.reject(e));
+                return playerRes.json()
+            })
+            .then((player) => {
+                this.setState({
+                    player: player
+                }, () => { console.log(this.state.player) })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
     handleSubmit = e => {
@@ -83,9 +94,9 @@ class EditPlayer extends Component {
         const selected = this.state.player.schoolid
         return (Object.values(schools).map(school => {
             if (school.id !== selected) {
-                return <option name="school-id" value={school.id}>{school.name}</option>
+                return <option name="school-id" value={school.id}>{school.schoolname}</option>
             } else {
-                return <option name="school-id" value={school.id} selected>{school.name}</option>
+                return <option name="school-id" value={school.id} selected>{school.schoolname}</option>
             }
         })
         )

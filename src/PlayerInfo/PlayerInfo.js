@@ -63,21 +63,32 @@ class PlayerInfo extends Component {
 
 
     componentDidMount() {
-        const id = this.props.match.params.id
-        this.setState({
-            player: this.findPlayer(id)
-        }, () => { console.log(this.state.player) })
+        let id = this.props.match.params.id
+        fetch(`${config.API_ENDPOINT}/player/${id}`)
+            .then((playerRes) => {
+                if (!playerRes.ok)
+                    return playerRes.json().then(e => Promise.reject(e));
+                return playerRes.json()
+            })
+            .then((player) => {
+                this.setState({
+                    player: player
+                }, () => { console.log(this.state.player) })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
     render() {
         const id = this.props.match.params.id
-
+        console.log(this.state.player.note)
         return (
             <div className='player-info'>
                 <main role="main">
                     <NavBar history={this.props.history} />
                     <header role="banner">
-                        {/* <h1>{this.state.player.name}</h1> */}
+                        <h1>{this.state.player.name}</h1>
 
                     </header>
                     <section className="player">
@@ -91,7 +102,7 @@ class PlayerInfo extends Component {
                     </section>
                     <section>
                         <label htmlFor='player-notes'>Notes:</label> <br />
-                        <p>{this.state.player.notes}</p>
+                        <p>{this.state.player.note}</p>
                     </section>
                     <div className='vid-player'>
                         {VidPlayer(this.state.player)}

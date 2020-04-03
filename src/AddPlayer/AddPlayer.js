@@ -56,7 +56,7 @@ class AddPlayer extends Component {
     renderSchoolSelect() {
         const schools = this.context.schools
         return (Object.values(schools).map(school => {
-            return <option name="school-id" value={school.id}>{school.name}</option>
+            return <option name="school-id" value={school.id}>{school.schoolname}</option>
         })
         )
     };
