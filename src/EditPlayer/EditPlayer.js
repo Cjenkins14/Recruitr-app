@@ -42,7 +42,7 @@ class EditPlayer extends Component {
             .then((player) => {
                 this.setState({
                     player: player
-                }, () => { console.log(this.state.player) })
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -77,7 +77,7 @@ class EditPlayer extends Component {
         })
             .then(response => response.json())
             .then(player => {
-                console.log(player)
+
                 this.context.handlePlayerUpdate(player, id)
             })
             .then(
@@ -110,7 +110,7 @@ class EditPlayer extends Component {
     };
 
     render() {
-        console.log(this.state.player)
+
         return (
 
             <main role="main">

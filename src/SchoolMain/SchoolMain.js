@@ -52,21 +52,6 @@ class SchoolMain extends Component {
             })
     };
 
-    // find player by id to set state
-    findPlayers = (key) => {
-        const playerInfo = this.context.playerInfo
-        const players = Object.values(playerInfo).filter(player => player.schoolid === Number(key))
-        return players
-    };
-
-    // find school by id to set state
-    findSchool = (key) => {
-        const schools = this.context.schools
-        const school = schools.find(school => school.id === Number(key))
-        console.log(school)
-        return school
-    };
-
     renderPlayers() {
         return (
             Object.values(this.state.school).map(player =>
@@ -81,13 +66,6 @@ class SchoolMain extends Component {
                 </li>
             ))
     };
-    // console.log('mounted')
-    // const id = this.props.match.params.id
-    // this.setState({
-    // players: this.findPlayers(id),
-    // school: this.findSchool(id)
-    // }, () => { console.log(this.state.school, this.state.players) }
-    // )
 
     componentDidMount() {
         let id = this.props.match.params.id
@@ -100,7 +78,7 @@ class SchoolMain extends Component {
             .then((school) => {
                 this.setState({
                     school: school
-                }, () => { console.log(this.state.school) })
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -109,10 +87,7 @@ class SchoolMain extends Component {
 
 
     render() {
-        console.log(this.state)
         return (
-
-
             <div className='school-main'>
                 <NavBar history={this.props.history} />
                 <header role="banner">
@@ -122,7 +97,7 @@ class SchoolMain extends Component {
                 <section className="recruits">
 
                     <ul className="recruit-list">
-                        {this.state.school.length && this.renderPlayers()}
+                        {this.renderPlayers()}
                     </ul>
                 </section>
                 <section>

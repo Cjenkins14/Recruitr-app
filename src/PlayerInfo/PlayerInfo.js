@@ -73,7 +73,7 @@ class PlayerInfo extends Component {
             .then((player) => {
                 this.setState({
                     player: player
-                }, () => { console.log(this.state.player) })
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -82,7 +82,7 @@ class PlayerInfo extends Component {
 
     render() {
         const id = this.props.match.params.id
-        console.log(this.state.player.note)
+
         return (
             <div className='player-info'>
                 <main role="main">

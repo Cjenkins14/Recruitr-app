@@ -39,11 +39,10 @@ class App extends Component {
                 ])
             })
             .then(([schools, players]) => {
-                console.log(schools, players)
                 this.setState({
                     school: schools,
                     playerInfo: players
-                }, () => { console.log(this.state, this.ApiContext) })
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -56,7 +55,7 @@ class App extends Component {
                 [...this.state.school,
                     newSchool]
         })
-        console.log(this.state.school)
+
     };
 
     handleNewPlayer = (newPlayer) => {
@@ -66,7 +65,7 @@ class App extends Component {
                 newPlayer
             ]
 
-        }, console.log(this.state))
+        })
     };
 
     handleDeletePlayer = (playerId) => {
@@ -76,11 +75,9 @@ class App extends Component {
     };
 
     handleDeleteSchool = schoolId => {
-        console.log(typeof schoolId)
-        console.log(this.state.school)
         this.setState({
             school: this.state.school.filter(school => school.id !== Number(schoolId))
-        }, () => { console.log(this.state.school) })
+        })
     };
 
     handlePlayerUpdate = (update, id) => {
