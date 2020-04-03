@@ -194,7 +194,7 @@ class EditPlayer extends Component {
                             <textarea
                                 className="eval"
                                 id="eval-notes"
-                                defaultValue={this.state.player.notes} /> <br />
+                                defaultValue={this.state.player.note} /> <br />
                         </fieldset>
                         <button className='submit-button' type="submit">Update</button>
                         <button className='reset-button' type="reset">Clear</button>
