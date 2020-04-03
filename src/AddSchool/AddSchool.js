@@ -16,7 +16,7 @@ class AddSchool extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const newSchool = {
-            name: e.target['school-name'].value
+            schoolname: e.target['school-name'].value
         }
         fetch(`${config.API_ENDPOINT}/school`, {
             method: 'POST',
